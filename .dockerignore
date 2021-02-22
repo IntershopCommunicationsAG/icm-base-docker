@@ -1,0 +1,15 @@
+**/charts/
+target/
+work/
+.git/
+build/
+gradle/
+gradle/
+
+# IntelliJ project files
+.idea/*
+*.iml
+out
+gen
+*.bak
+*.log

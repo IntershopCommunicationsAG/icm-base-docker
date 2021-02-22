@@ -1,0 +1,15 @@
+*.bak
+*.log
+
+# Eclipse project files
+**/bin/
+**/.settings/
+**/.classpath
+**/.project
+
+# editor backup files
+**~
+
+
+# viual code
+.vscode/**/*
