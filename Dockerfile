@@ -15,6 +15,9 @@
 #
 FROM adoptopenjdk:8u282-b08-jdk-hotspot
 
+LABEL maintainer="a-team@intershop.de"
+LABEL javaversion="adoptopenjdk 8u282-b08"
+
 RUN apt-get update && apt-get install -yq unison tzdata ca-certificates && \
     # Add groups
     addgroup --gid 150 intershop && useradd --uid 150 -g intershop --shell /bin/sh intershop  && \
