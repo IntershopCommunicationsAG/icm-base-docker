@@ -38,6 +38,7 @@ RUN apt-get update && apt-get install -yq unison tzdata ca-certificates && \
     tar -zxf /tmp/cpbuilder.tar.gz && mv cpbuilder /usr/bin/ && rm -f cpbuilder.tar.gz && \
     curl -o /tmp/dirdiff.tar.gz -L https://github.com/IntershopCommunicationsAG/dirdiff/releases/download/1.1.0/dirdiff.linux.amd64.tar.gz && \
     tar -zxf /tmp/dirdiff.tar.gz && mv dirdiff /usr/bin/ && rm -f dirdiff.tar.gz && \
+    chmod -R 1777 /tmp && \
     # Cleanup the Dockerfile
     apt-get purge -y curl apt-transport-https unzip && \
     apt-get -y autoremove && \
