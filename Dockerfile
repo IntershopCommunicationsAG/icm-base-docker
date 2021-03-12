@@ -13,21 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-FROM adoptopenjdk:8u282-b08-jdk-hotspot
+FROM adoptopenjdk:8u282-b08-jre-hotspot
 
 LABEL maintainer="a-team@intershop.de"
 LABEL javaversion="adoptopenjdk 8u282-b08"
 
 RUN apt-get update && apt-get install -yq unison tzdata ca-certificates && \
     # Add groups
-    addgroup --gid 150 intershop && useradd --uid 150 -g intershop --shell /bin/sh intershop  && \
+    addgroup --gid 150 intershop && useradd -m --uid 150 -g intershop --shell /bin/sh intershop  && \
     # Add directories
     mkdir -p /intershop/logs && mkdir -p /intershop/conf && chown -R intershop:intershop /intershop && \
     #Add environement file
     echo "export JAVA_HOME=/opt/java/openjdk" > /etc/profile.d/02-add-JAVAHOME.sh && \
     echo "export PATH=${JAVA_HOME}/bin:${PATH}" >> /etc/profile.d/02-add-JAVAHOME.sh && \
-    cat /opt/java/openjdk/jre/lib/security/java.security | sed -e "s/.*crypto\.policy=.*limited$/crypto\.policy=unlimited/" > /tmp/java.security && \
-    cd /tmp && cp -f java.security /opt/java/openjdk/jre/lib/security/ && rm -f /tmp/java.security && update-ca-certificates && \
+    cat /opt/java/openjdk/lib/security/java.security | sed -e "s/.*crypto\.policy=.*limited$/crypto\.policy=unlimited/" > /tmp/java.security && \
+    cd /tmp && cp -f java.security /opt/java/openjdk/lib/security/ && rm -f /tmp/java.security && update-ca-certificates && \
     curl -o /tmp/waitfordb.tar.gz -L https://github.com/m-raab/waitfordb/releases/download/2.0.9/waitfordb.linux.amd64.tar.gz && \
     tar -zxf /tmp/waitfordb.tar.gz && mv waitfordb /usr/bin/ && rm -f waitfordb.tar.gz && \
     curl -o /tmp/waitforfile.tar.gz -L https://github.com/m-raab/waitforfile/releases/download/1.0.0/waitforfile.linux.amd64.tar.gz && \
