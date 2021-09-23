@@ -13,12 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-FROM adoptopenjdk:11.0.10_9-jre-hotspot
+FROM adoptopenjdk:11.0.11_9-jre-hotspot
 
 LABEL maintainer="a-team@intershop.de"
-LABEL javaversion="adoptopenjdk jre 11.0.10_9"
+LABEL javaversion="adoptopenjdk jre 11.0.11_9"
 
 RUN apt-get update && apt-get install -yq unison tzdata ca-certificates && \
+    # update existing packages
+    apt upgrade -yq && \
     # Add groups
     addgroup --gid 150 intershop && useradd -m --uid 150 -g intershop --shell /bin/sh intershop  && \
     # Add directories
@@ -47,4 +49,4 @@ RUN apt-get update && apt-get install -yq unison tzdata ca-certificates && \
 VOLUME [ "/intershop/conf", \
          "/intershop/logs" ]
 
-CMD /bin/sh   
+CMD /bin/sh
