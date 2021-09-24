@@ -15,12 +15,10 @@
 #
 FROM adoptopenjdk:11.0.11_9-jre-hotspot
 
-LABEL maintainer="a-team@intershop.de"
-LABEL javaversion="adoptopenjdk jre 11.0.11_9"
+LABEL maintainer="a-team@intershop.de" \
+      javaversion="adoptopenjdk jre 11.0.11_9"
 
 RUN apt-get update && apt-get install -yq unison tzdata ca-certificates && \
-    # update existing packages
-    apt upgrade -yq && \
     # Add groups
     addgroup --gid 150 intershop && useradd -m --uid 150 -g intershop --shell /bin/sh intershop  && \
     # Add directories
@@ -44,7 +42,7 @@ RUN apt-get update && apt-get install -yq unison tzdata ca-certificates && \
     # Cleanup the Dockerfile
     apt-get purge -y curl apt-transport-https unzip && \
     apt-get -y autoremove && \
-    apt-get clean && rm -rf /var/lib/apt/lists
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 VOLUME [ "/intershop/conf", \
          "/intershop/logs" ]
