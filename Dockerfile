@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -yq unison tzdata ca-certificates && \
     tar -zxf /tmp/waitfordb.tar.gz && mv waitfordb /usr/bin/ && rm -f waitfordb.tar.gz && \
     curl -o /tmp/waitforfile.tar.gz -L https://github.com/m-raab/waitforfile/releases/download/1.0.0/waitforfile.linux.amd64.tar.gz && \
     tar -zxf /tmp/waitforfile.tar.gz && mv waitforfile /usr/bin/ && rm -f waitforfile.tar.gz && \
-    curl -o /tmp/waitforurl.tar.gz -L https://github.com/m-raab/waitforurl/releases/download/0.0.1/waitforurl.linux.amd64.tar.gz && \
+    curl -o /tmp/waitforurl.tar.gz -L https://github.com/m-raab/waitforurl/releases/download/0.0.3/waitforurl.linux.amd64.tar.gz && \
     tar -zxf /tmp/waitforurl.tar.gz && mv waitforurl /usr/bin/ && rm -f waitforurl.tar.gz && \
     curl -o /tmp/cpbuilder.tar.gz -L https://github.com/IntershopCommunicationsAG/cpbuilder/releases/download/0.9/cpbuilder.linux.amd64.tar.gz && \
     tar -zxf /tmp/cpbuilder.tar.gz && mv cpbuilder /usr/bin/ && rm -f cpbuilder.tar.gz && \
