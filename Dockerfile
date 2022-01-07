@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-FROM adoptopenjdk:11.0.11_9-jre-hotspot
+FROM eclipse-temurin:11.0.13_8-jre
 
 LABEL maintainer="a-team@intershop.de" \
       javaversion="adoptopenjdk jre 11.0.11_9"
